@@ -9,6 +9,7 @@ const errorsHandler = require('./middlewares/errorsHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const movies = require('./routes/movies');
+const allowedCors = require('./middlewares/allowedCors');
 
 const { PORT = 3000 } = process.env;
 
@@ -21,6 +22,8 @@ mongoose.connect('mongodb://localhost:27017/diplomadb', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(allowedCors);
 
 app.use(requestLogger);
 
