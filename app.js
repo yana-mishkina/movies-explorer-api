@@ -8,6 +8,7 @@ const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/errorsHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const movies = require('./routes/movies');
 
 const { PORT = 3000 } = process.env;
 
@@ -41,6 +42,7 @@ app.post('/signup', celebrate({
 app.use(auth);
 
 app.use('/users', users);
+app.use('/movies', movies);
 
 app.use('*', () => {
   throw new NotFoundError('Страница не найдена');

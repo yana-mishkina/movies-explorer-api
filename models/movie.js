@@ -32,7 +32,7 @@ const movieSchema = new mongoose.Schema({
       message: 'Ссылка постера не корректна',
     },
   },
-  trailerLink: {
+  trailer: {
     type: String,
     required: [true, 'Ссылка не может быть пустой'],
     validate: {
@@ -71,4 +71,4 @@ const movieSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('card', movieSchema);
+module.exports = mongoose.model('movie', movieSchema);
