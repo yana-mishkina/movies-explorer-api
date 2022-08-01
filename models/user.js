@@ -5,6 +5,7 @@ const validator = require('validator');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     minlength: [2, 'В имени не может быть меньше 2 символов'],
     maxLength: [30, 'В имени не может быть больше 30 символов'],
     default: 'Пользователь',
@@ -24,12 +25,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
-    validate: {
-      validator(v) {
-        return validator.isStrongPassword(v);
-      },
-      message: 'Пароль не надежный',
-    },
   },
 });
 

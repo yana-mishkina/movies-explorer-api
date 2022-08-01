@@ -32,7 +32,7 @@ const movieSchema = new mongoose.Schema({
       message: 'Ссылка постера не корректна',
     },
   },
-  trailer: {
+  trailerLink: {
     type: String,
     required: [true, 'Ссылка не может быть пустой'],
     validate: {

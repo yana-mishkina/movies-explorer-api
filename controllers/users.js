@@ -18,8 +18,8 @@ const getCurrentUser = (req, res, next) => {
 };
 
 const updateInfo = (req, res, next) => {
-  const { name } = req.body;
-  User.findByIdAndUpdate(req.user._id, { name }, {
+  const { name, email } = req.body;
+  User.findByIdAndUpdate(req.user._id, { name, email }, {
     new: true,
     runValidators: true,
   })
@@ -32,12 +32,15 @@ const updateInfo = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError(err.message);
+        next(new BadRequestError(err.message));
       } else if (err.name === 'CastError') {
-        throw new NotFoundError('Пользователь по указанному id не найден');
+        next(new NotFoundError('Пользователь по указанному id не найден'));
+      } else if (err.code === 11000) {
+        next(new ConflictError('Пользователь с таким email существует'));
+      } else {
+        next(err);
       }
-    })
-    .catch(next);
+    });
 };
 
 const createUser = (req, res, next) => {
@@ -47,14 +50,6 @@ const createUser = (req, res, next) => {
       email: req.body.email,
       password: hash,
     }))
-    .catch((err) => {
-      if (err.code === 11000) {
-        throw new ConflictError('Пользователь с таким email существует');
-      }
-      if (err.name === 'ValidationError') {
-        throw new BadRequestError(err.message);
-      }
-    })
     .then((user) => {
       res.send({
         _id: user._id,
@@ -62,7 +57,15 @@ const createUser = (req, res, next) => {
         email: user.email,
       });
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.code === 11000) {
+        next(new ConflictError('Пользователь с таким email существует'));
+      } else if (err.name === 'ValidationError') {
+        next(new BadRequestError(err.message));
+      } else {
+        next(err);
+      }
+    });
 };
 
 const login = (req, res, next) => {
@@ -77,7 +80,7 @@ const login = (req, res, next) => {
       res.send({ token });
     })
     .catch((err) => {
-      throw new NotAuthError(err.message);
+      next(new NotAuthError(err.message));
     })
     .catch(next);
 };
