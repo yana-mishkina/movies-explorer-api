@@ -9,7 +9,7 @@ router.use(authRouters);
 router.use(auth, userRouter);
 router.use(auth, movieRouter);
 
-router.use('*', () => {
+router.use('*', auth, () => {
   throw new NotFoundError('Страница не найдена');
 });
 
