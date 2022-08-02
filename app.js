@@ -8,7 +8,7 @@ const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = require('./middlewares/allowedCors');
 
-const { PORT, NODE_ENV, DB_URL } = process.env;
+const { NODE_ENV, PORT = 3000, DB_URL = 'mongodb://localhost:27017/moviesdb' } = process.env;
 
 const app = express();
 
