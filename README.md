@@ -1,1 +1,1 @@
-домен https://diploma.mishkinayana.nomoredomains.xyz  IP-адрес сервера 158.160.5.219
+домен https://diploma.mishkinayana.nomoredomains.xyz  IP-адрес сервера 130.193.42.175
