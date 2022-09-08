@@ -5,6 +5,8 @@ const allowedCors = [
   'http://diploma.mishkinayana.nomoredomains.xyz',
   'http://api.diploma.mishkinayana.nomoredomains.sbs',
   'api.diploma.mishkinayana.nomoredomains.sbs',
+  'https://diploma.mishkinayana.nomoredomains.xyz',
+  'https://api.diploma.mishkinayana.nomoredomains.sbs',
 ];
 
 module.exports = ((req, res, next) => {
