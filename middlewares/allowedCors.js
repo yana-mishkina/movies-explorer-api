@@ -3,6 +3,7 @@ const allowedCors = [
   'localhost:3000',
   'http://localhost:3000',
   'http://diploma.mishkinayana.nomoredomains.xyz',
+  'http://api.diploma.mishkinayana.nomoredomains.sbs',
 ];
 
 module.exports = ((req, res, next) => {
