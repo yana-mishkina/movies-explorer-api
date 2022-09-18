@@ -5,22 +5,27 @@ const movieSchema = new mongoose.Schema({
   country: {
     type: String,
     required: [true, 'Необходимо указать страну'],
+    default: 'No data',
   },
   director: {
     type: String,
     required: [true, 'Необходимо указать режиссера'],
+    default: 'No data',
   },
   duration: {
     type: Number,
     required: [true, 'Необходимо указать продолжительность'],
+    default: 0,
   },
   year: {
     type: String,
     required: [true, 'Необходимо указать год'],
+    default: 'No data',
   },
   description: {
     type: String,
     required: [true, 'Необходимо указать описание'],
+    default: 'No data',
   },
   image: {
     type: String,
@@ -31,6 +36,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка постера не корректна',
     },
+    default: 'https://beatfilmfestival.ru/',
   },
   trailerLink: {
     type: String,
@@ -41,6 +47,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка трейлера не корректна',
     },
+    default: 'https://beatfilmfestival.ru/',
   },
   thumbnail: {
     type: String,
@@ -51,6 +58,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка минипостера не корректна',
     },
+    default: 'https://beatfilmfestival.ru/',
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -64,10 +72,12 @@ const movieSchema = new mongoose.Schema({
   nameRU: {
     type: String,
     required: [true, 'Название на русском может быть пустым'],
+    default: 'No data',
   },
   nameEN: {
     type: String,
     required: [true, 'Название на английском может быть пустым'],
+    default: 'No data',
   },
 });
 
