@@ -36,7 +36,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка постера не корректна',
     },
-    default: 'https://beatfilmfestival.ru/',
+    default: 'https://www.beatfilmfestival.ru/',
   },
   trailerLink: {
     type: String,
@@ -47,7 +47,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка трейлера не корректна',
     },
-    default: 'https://beatfilmfestival.ru/',
+    default: 'https://www.beatfilmfestival.ru/',
   },
   thumbnail: {
     type: String,
@@ -58,7 +58,7 @@ const movieSchema = new mongoose.Schema({
       },
       message: 'Ссылка минипостера не корректна',
     },
-    default: 'https://beatfilmfestival.ru/',
+    default: 'https://www.beatfilmfestival.ru/',
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
